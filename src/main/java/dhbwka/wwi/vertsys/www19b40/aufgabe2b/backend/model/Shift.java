@@ -1,5 +1,6 @@
 package dhbwka.wwi.vertsys.www19b40.aufgabe2b.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,14 +30,17 @@ public class Shift implements Serializable {
     @ManyToOne
     private Employee employee;
 
+    @JsonFormat(pattern = "dd.MM.yyyy")
+    private LocalDate date;
+
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime startTime;
 
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime endTime;
 
     @Column(length = 100)
     @Size(min = 0, max = 100,message = "Maximal 100 Zeichen")
     private String comment;
-
-    private LocalDate date;
 
 }

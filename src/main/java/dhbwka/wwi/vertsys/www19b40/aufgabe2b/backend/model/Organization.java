@@ -29,5 +29,5 @@ public class Organization implements Serializable {
     private String name = "";
 
     @OneToMany(mappedBy = "organization")
-    private List<Employee> employeeList = new ArrayList<>();
+    private List<Employee> employee = new ArrayList<>();
 }

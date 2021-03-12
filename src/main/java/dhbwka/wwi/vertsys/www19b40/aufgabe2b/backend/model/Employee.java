@@ -1,13 +1,16 @@
 package dhbwka.wwi.vertsys.www19b40.aufgabe2b.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +40,9 @@ public class Employee implements Serializable {
     private String firstName = "";
 
     @NotNull(message = "Bitte tragen Sie ein gültiges Geburtsdatum ein.")
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "employee")
-    private List<Shift> shiftList = new ArrayList<>();
+    private List<Shift> shift = new ArrayList<>();
 }
